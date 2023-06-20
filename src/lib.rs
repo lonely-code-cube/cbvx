@@ -12,10 +12,13 @@ fn echo(a: &str) -> PyResult<&str> {
 fn cbvx(py: Python, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(echo, m)?)?;
 
-    // The spotify submodule contains functions to generate spotify image
-    let spot_mod = PyModule::new(py.clone(), "spotify")?;
-    spot_mod.add_function(wrap_pyfunction!(spotify::pallet, spot_mod)?)?;
-    m.add_submodule(spot_mod)?;
+    // The iml module contains image manipulation class and functions
+    let iml = PyModule::new(py.clone(), "iml")?;
+
+    // The spotify class contains functions to generate spotify image
+    iml.add_class::<spotify::Spotify>()?;
+
+    m.add_submodule(iml)?;
 
     Ok(())
 }

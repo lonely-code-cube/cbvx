@@ -25,6 +25,9 @@ var/
 include/
 man/
 venv/
+
+test-env/
+
 *.egg-info/
 .installed.cfg
 *.egg
@@ -70,3 +73,6 @@ docs/_build/
 
 # Pyenv
 .python-version
+
+# scripts
+build.sh
